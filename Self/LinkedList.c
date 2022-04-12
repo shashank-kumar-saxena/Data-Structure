@@ -15,9 +15,11 @@ void main()
     {
         printf("\nEnter your choice\n");
         printf("1 for insert node at begning\n");
-        printf("2 insert element at the starting of linked list\n");
-        printf("3 for traversing\n");
-        printf("4 for insert an element after an element\n");
+        printf("2 insert node at end\n");
+        printf("3 for insert an element after a specific element\n");
+        printf("4 for insert element at specific position\n");
+        printf("5 for traversing\n");
+        printf("6 for search the element\n");
         printf("13 for exit\n");
         scanf("%d", &n);
         if (n == 13)
@@ -57,23 +59,20 @@ void main()
             ptr->next = temp;
             break;
         case 3:
-            temp = head;
-            while (temp != NULL)
-            {
-                printf("%d ", temp->info);
-                temp = temp->next;
-            }
+            printf("Enter the position where you want to insert the node\n");
+            scanf("%d", &data);
             break;
         case 4:
-            printf("Enter the specific element where you want to insert the element\n");
-            scanf("%d", data);
+            // Insert node after apecific element
+            printf("Enter the specific element after which you want to insert the element\n");
+            scanf("%d", &data);
             ptr = head;
             if (ptr == NULL)
             {
                 printf("No data found\n");
                 break;
             }
-            while (ptr->next != NULL)
+            while (ptr != NULL)
             {
                 if (data == ptr->info)
                 {
@@ -81,7 +80,8 @@ void main()
                 }
                 ptr = ptr->next;
             }
-            if (ptr->next == NULL)
+
+            if (ptr == NULL)
             {
 
                 printf("Element not found\n");
@@ -95,6 +95,14 @@ void main()
                 temp->next = ptr->next;
                 ptr->next = temp;
                 printf("Node Insert successfully\n");
+            }
+            break;
+        case 5:
+            temp = head;
+            while (temp != NULL)
+            {
+                printf("%d ", temp->info);
+                temp = temp->next;
             }
             break;
         default:
