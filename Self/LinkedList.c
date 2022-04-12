@@ -127,6 +127,25 @@ void main()
                 temp = temp->next;
             }
             break;
+        case 6:
+            printf("Enter the element that you want to search\n");
+            scanf("%d", &data);
+            ptr = head;
+            while (ptr != NULL)
+            {
+                if (ptr->info == data)
+                    break;
+                ptr = ptr->next;
+            }
+            if (ptr == NULL)
+            {
+                printf("Element not found");
+            }
+            else
+            {
+                printf("Element found");
+            }
+            break;
         default:
             printf("Enter the valid choice\n");
             break;
