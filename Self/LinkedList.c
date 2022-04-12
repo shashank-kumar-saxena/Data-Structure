@@ -1,3 +1,4 @@
+// Code By Shashank
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct ldList
@@ -14,10 +15,10 @@ void main()
     while (1)
     {
         printf("\nEnter your choice\n");
-        printf("1 for insert node at begning\n");
-        printf("2 insert node at end\n");
-        printf("3 for insert an element after a specific element\n");
-        printf("4 for insert element at specific position\n");
+        printf("1 for insert element at begning\n");
+        printf("2 insert element at end\n");
+        printf("3 for insert an element after a specific position\n");
+        printf("4 for insert element at specific element\n");
         printf("5 for traversing\n");
         printf("6 for search the element\n");
         printf("13 for exit\n");
@@ -61,6 +62,27 @@ void main()
         case 3:
             printf("Enter the position where you want to insert the node\n");
             scanf("%d", &data);
+            data--;
+            ptr = head;
+            while (data > 1 && ptr != NULL)
+            {
+                ptr = ptr->next;
+                data--;
+            }
+            if (ptr != NULL)
+            {
+                printf("Enter the data you want to insert\n");
+                scanf("%d", &data);
+                temp = (node *)(malloc(sizeof(node)));
+                temp->info = data;
+                temp->next = ptr->next;
+                ptr->next = temp;
+                printf("Node Insert successfully\n");
+            }
+            else
+            {
+                printf("Limit Exceed\n");
+            }
             break;
         case 4:
             // Insert node after apecific element
