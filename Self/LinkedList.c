@@ -17,10 +17,11 @@ void main()
         printf("\nEnter your choice\n");
         printf("1 for insert element at begning\n");
         printf("2 insert element at end\n");
-        printf("3 for insert an element after a specific position\n");
-        printf("4 for insert element at specific element\n");
+        printf("3 for insert an element at a specific position\n");
+        printf("4 for insert element after specific element\n");
         printf("5 for traversing\n");
         printf("6 for search the element\n");
+        printf("7 for delete a specific element");
         printf("13 for exit\n");
         scanf("%d", &n);
         if (n == 13)
@@ -60,6 +61,7 @@ void main()
             ptr->next = temp;
             break;
         case 3:
+            // Insert a element at specific position
             printf("Enter the position where you want to insert the node\n");
             scanf("%d", &data);
             data--;
@@ -139,12 +141,40 @@ void main()
             }
             if (ptr == NULL)
             {
-                printf("Element not found");
+                printf("Element not found\n");
             }
             else
             {
-                printf("Element found");
+                printf("Element found\n");
             }
+            break;
+        case 7:
+            printf("Enter the element you want to delete\n");
+            scanf("%d", &data);
+            ptr = head;
+            if (ptr->info == data)
+            {
+                temp = head;
+                head = ptr->next;
+                free(temp);
+                break;
+            }
+            while (ptr != NULL)
+            {
+                if (data == ptr->info)
+                {
+                    break;
+                }
+                ptr = ptr->next;
+            }
+            if (ptr != NULL)
+            {
+                        }
+            else
+            {
+                printf("Element not found\n");
+            }
+
             break;
         default:
             printf("Enter the valid choice\n");
