@@ -1,18 +1,18 @@
 #include <stdio.h>
+#include <conio.h>
 #include <stdlib.h>
 typedef struct lkList
 {
-    int info;
-    struct lkList *next;
+	int info;
+	struct lkList *next;
 } node;
 void main()
 {
-		int n = 0, data = 0;
-		node *temp = NULL;
-		node *head = NULL;
-		node *end=NULL;
-		int count=0;
-		clrscr();
+	int n = 0, data = 0;
+	node *temp = NULL;
+	node *head = NULL;
+	node *end = NULL;
+	int count = 0;
 	while (1)
 	{
 		printf("\nEnter your choice\n");
@@ -40,60 +40,59 @@ void main()
 			head = temp;
 			printf("Node insert successfully");
 			break;
-		 case 2:
-			 temp=head;
-			 if(temp==NULL)
-			 {
-			  printf("No data found\n");
-			  break;
-			 }
-			 while(temp!=NULL)
-			 {
-			 printf("%d ",temp->info);
-			 temp=temp->next;
-			 }
-			break;
-			case 3:
-			   printf("Enter the element you want to insert at end\n");
-			   scanf("%d",&data);
-			   end=(node *)(malloc(sizeof(node)));
-			   end->info=data;
-			   temp=head;
-			   while(temp->next!=NULL)
-			   {
-			   temp=temp->next;
-			   }
-			   if(temp->next==NULL)
-			   {
-			   temp->next=end;
-			   end->next=NULL;
-			   printf("Node insert successfully\n");
-			   }
-			   break;
-			   case 4:
-			   temp=head;
-			   count=0;
-			   printf("Enter the data you want to search\n");
-			   scanf("%d",&data);
-			   while(temp!=NULL)
-			   {
-				if(temp->info==data)
-				{
-				 count=1;
-				 break;
-
-				}
-				temp=temp->next;
-			   }
-			   if(count==1)
-				{
-				 printf("Element found\n");
-				}
-				else
-				{
-				 printf("Element not found\n");
-				}
+		case 2:
+			temp = head;
+			if (temp == NULL)
+			{
+				printf("No data found\n");
 				break;
+			}
+			while (temp != NULL)
+			{
+				printf("%d ", temp->info);
+				temp = temp->next;
+			}
+			break;
+		case 3:
+			printf("Enter the element you want to insert at end\n");
+			scanf("%d", &data);
+			end = (node *)(malloc(sizeof(node)));
+			end->info = data;
+			temp = head;
+			while (temp->next != NULL)
+			{
+				temp = temp->next;
+			}
+			if (temp->next == NULL)
+			{
+				temp->next = end;
+				end->next = NULL;
+				printf("Node insert successfully\n");
+			}
+			break;
+		case 4:
+			temp = head;
+			count = 0;
+			printf("Enter the data you want to search\n");
+			scanf("%d", &data);
+			while (temp != NULL)
+			{
+				if (temp->info == data)
+				{
+					count = 1;
+					break;
+				}
+				temp = temp->next;
+			}
+			if (count == 1)
+			{
+				printf("Element found\n");
+			}
+			else
+			{
+				printf("Element not found\n");
+			}
+			break;
 		default:
 			printf("Enter the valid choice");
 			break;
