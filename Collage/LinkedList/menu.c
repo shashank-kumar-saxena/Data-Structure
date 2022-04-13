@@ -67,7 +67,7 @@ void main()
 			scanf("%d", &data);
 			data--;
 			ptr = head;
-			while (data > 1 && ptr != NULL)
+			while (data >=1 && ptr != NULL)
 			{
 				ptr = ptr->next;
 				data--;
