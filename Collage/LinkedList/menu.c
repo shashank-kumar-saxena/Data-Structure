@@ -202,10 +202,6 @@ void main()
 				while(data>0&&ptr!=NULL)
 				{
 				 data--;
-				 if(data==0||ptr==NULL)
-				 {
-				  break;
-				 }
 				 ptr=ptr->next;
 				}
 				if(ptr==NULL)
