@@ -159,17 +159,22 @@ void main()
                 free(temp);
                 break;
             }
-            while (ptr != NULL)
-            {
-                if (data == ptr->info)
+            if (ptr->next != NULL)
+                while (ptr != NULL)
                 {
-                    break;
+                    if (data == (ptr->next)->info)
+                    {
+                        break;
+                    }
+                    ptr = ptr->next;
                 }
-                ptr = ptr->next;
-            }
             if (ptr != NULL)
             {
-                        }
+                temp = ptr->next;
+                ptr->next = temp->next;
+                free(temp);
+                printf("Element delete successfully\n");
+            }
             else
             {
                 printf("Element not found\n");
