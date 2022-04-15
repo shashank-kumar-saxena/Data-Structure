@@ -22,6 +22,7 @@ int main()
     {
         printf("\nEnter your choice\n");
         printf("1 for insert at begning\n");
+        printf("2 for insert at end\n");
         printf("5 for traversing\n");
         printf("13 for exit\n");
         scanf("%d", &n);
@@ -35,6 +36,11 @@ int main()
             printf("Enter the element you want to insert\n");
             scanf("%d", &data);
             insertAtBeg(&head, data); // function calling
+            break;
+        case 2:
+            printf("Enter the element you want to insert\n");
+            scanf("%d", &data);
+            insertAtEnd(head, data); // function calling
             break;
         case 5:
             traversing(head); // calling
