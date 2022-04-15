@@ -11,7 +11,7 @@ typedef struct lklist
 node *temp = NULL;
 // function prototyping
 void insertAtBeg(node **head, int data);
-void insertAtEnd(node *head, int data);
+void insertAtEnd(node **head, int data);
 void traversing(node *head);
 int main()
 {
@@ -40,7 +40,7 @@ int main()
         case 2:
             printf("Enter the element you want to insert\n");
             scanf("%d", &data);
-            insertAtEnd(head, data); // function calling
+            insertAtEnd(&head, data); // function calling
             break;
         case 5:
             traversing(head); // calling
@@ -69,4 +69,24 @@ void traversing(node *head)
         printf("%d ", head->info);
         head = head->next;
     }
+}
+// function decleration of insert at end
+void insertAtEnd(node **head, int data)
+{
+    temp = (node *)(malloc(sizeof(node)));
+    temp->info = data;
+    temp->next = NULL;
+    if (*head == NULL)
+    {
+        *head = temp;
+        printf("node insert successfully\n");
+        return;
+    }
+    node *ptr = *head;
+    while (ptr->next != NULL)
+    {
+        ptr = ptr->next;
+    }
+    ptr->next = temp;
+    printf("node insert successfully\n");
 }
