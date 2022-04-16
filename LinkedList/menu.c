@@ -67,7 +67,7 @@ void main()
 			scanf("%d", &data);
 			data--;
 			ptr = head;
-			while (data >=1 && ptr != NULL)
+			while (data >= 1 && ptr != NULL)
 			{
 				ptr = ptr->next;
 				data--;
@@ -182,39 +182,37 @@ void main()
 				printf("Element not found\n");
 			}
 			break;
-			case 8:
-				printf("Enter position where you want to delete the element\n");
-				scanf("%d",&data);
+		case 8:
+			printf("Enter position where you want to delete the element\n");
+			scanf("%d", &data);
+			ptr = head;
+			if (ptr == NULL)
+			{
+				printf("No data present\n");
+				return;
+			}
+			if (data == 1)
+			{
+				temp = head;
+				head = ptr->next;
+				free(temp);
+				printf("Node delete successfully\n");
+				break;
+			}
+			data--;
+			while (data > 1 && ptr != NULL)
+			{
+				ptr = ptr->next;
 				data--;
-				ptr=head;
-				if(ptr==NULL)
-				{
-					printf("No data present\n");
-					break;
-				}
-				if(ptr->next==NULL)
-				{
-					free(head);
-					head=NULL;
-					printf("data delete successfully\n");
-					break;
-				}
-				while(data>0&&ptr!=NULL)
-				{
-				 data--;
-				 ptr=ptr->next;
-				}
-				if(ptr==NULL)
-				{
-				 printf("no data found or limit exceed\n");
-				}
-				else
-				{
-				 temp=ptr->next;
-				 ptr->next=temp->next;
-				 free(temp);
-				 printf("data delete successfully\n");
-				}
+			}
+			if (ptr != NULL)
+			{
+				temp = (ptr->next);
+				if (ptr->next != NULL)
+					ptr->next = (ptr->next)->next;
+				free(temp);
+				printf("node delete successully\n");
+			}
 			break;
 		default:
 			printf("Enter the valid choice\n");

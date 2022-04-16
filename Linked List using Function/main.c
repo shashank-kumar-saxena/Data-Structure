@@ -209,34 +209,32 @@ void deleteSpecific(node **head, int data)
 // function decleration of delete a specific element with the help of position
 void deleteSpecificPosition(node **head, int data)
 {
-    data--;
     node *ptr = *head;
     if (ptr == NULL)
     {
         printf("No data present\n");
         return;
     }
-    if (ptr->next == NULL)
+    if (data == 1)
     {
-        free(head);
-        *head = NULL;
-        printf("data delete successfully\n");
+        temp = *head;
+        *head = ptr->next;
+        free(temp);
+        printf("Node delete successfully\n");
         return;
     }
-    while (data > 0 && ptr != NULL)
+    data--;
+    while (data > 1 && ptr != NULL)
     {
-        data--;
         ptr = ptr->next;
+        data--;
     }
-    if (ptr == NULL)
+    if (ptr != NULL)
     {
-        printf("no data found or limit exceed\n");
-    }
-    else
-    {
-        temp = ptr->next;
-        ptr->next = temp->next;
+        temp = (ptr->next);
+        if (ptr->next != NULL)
+            ptr->next = (ptr->next)->next;
         free(temp);
-        printf("data delete successfully\n");
+        printf("node delete successully\n");
     }
 }
