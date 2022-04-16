@@ -10,12 +10,13 @@ typedef struct lklist
 // globle variable decleration
 node *temp = NULL;
 // function prototyping
-void insertAtBeg(node **head, int data);
-void insertAtEnd(node **head, int data);
-void insertAfterSpecific(node **head, int data);      // here data variable use to pass element after which we want to insert the element
-void insertAtSpecificPosition(node **head, int data); // here data variable use to pass position where we want to insert element
-void traversing(node *head);
-void deleteSpecific(node **head, int data); // here data variable use to provide a element that we want to delete
+void insertAtBeg(node **head, int data);              // case 1
+void insertAtEnd(node **head, int data);              // case 2
+void insertAfterSpecific(node **head, int data);      // case 3      // here data variable use to pass element after which we want to insert the element
+void insertAtSpecificPosition(node **head, int data); // case 4 // here data variable use to pass position where we want to insert element
+void traversing(node *head);                          // case 5
+void deleteSpecific(node **head, int data);           // case 6 // here data variable use to provide a element that we want to delete
+void deleteSpecificPosition(node **head, int data);   // case 7 //here data variable use to provide a position which element you want to delete
 int main()
 {
 
@@ -30,6 +31,7 @@ int main()
         printf("4 for insert at specific element\n");
         printf("5 for traversing\n");
         printf("6 for delete a element\n");
+        printf("7 for delete a element at specific element\n");
         printf("13 for exit\n");
         scanf("%d", &n);
         if (n == 13)
@@ -66,6 +68,12 @@ int main()
             scanf("%d", &data);
             deleteSpecific(&head, data);
             break;
+        case 7:
+            printf("Enter the position of element which you want to delete\n");
+            scanf("%d", &data);
+            deleteSpecificPosition(&head, data);
+            break;
+
         default:
             printf("Enter the valid choice\n");
             break;
@@ -196,5 +204,39 @@ void deleteSpecific(node **head, int data)
         }
         if (ptr == NULL)
             printf("no element found\n");
+    }
+}
+// function decleration of delete a specific element with the help of position
+void deleteSpecificPosition(node **head, int data)
+{
+    data--;
+    node *ptr = *head;
+    if (ptr == NULL)
+    {
+        printf("No data present\n");
+        return;
+    }
+    if (ptr->next == NULL)
+    {
+        free(head);
+        *head = NULL;
+        printf("data delete successfully\n");
+        return;
+    }
+    while (data > 0 && ptr != NULL)
+    {
+        data--;
+        ptr = ptr->next;
+    }
+    if (ptr == NULL)
+    {
+        printf("no data found or limit exceed\n");
+    }
+    else
+    {
+        temp = ptr->next;
+        ptr->next = temp->next;
+        free(temp);
+        printf("data delete successfully\n");
     }
 }
