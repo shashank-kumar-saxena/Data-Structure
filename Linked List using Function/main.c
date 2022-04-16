@@ -1,7 +1,7 @@
-// by shashank
+// Linked List using function
 #include <stdio.h>
 #include <stdlib.h>
-// Single linked list define
+// Single linked list
 typedef struct lklist
 {
     int info;
@@ -12,6 +12,7 @@ node *temp = NULL;
 // function prototyping
 void insertAtBeg(node **head, int data);
 void insertAtEnd(node **head, int data);
+void insertAfterSpecific(node **head, int data); // here data variable use to pass element after which we want to insert the element
 void traversing(node *head);
 int main()
 {
@@ -23,6 +24,7 @@ int main()
         printf("\nEnter your choice\n");
         printf("1 for insert at begning\n");
         printf("2 for insert at end\n");
+        printf("3 for insert after specific element\n");
         printf("5 for traversing\n");
         printf("13 for exit\n");
         scanf("%d", &n);
@@ -41,6 +43,11 @@ int main()
             printf("Enter the element you want to insert\n");
             scanf("%d", &data);
             insertAtEnd(&head, data); // function calling
+            break;
+        case 3:
+            printf("Enter element after which you want to insert the element\n");
+            scanf("%d", &data);
+            insertAfterSpecific(&head, data);
             break;
         case 5:
             traversing(head); // calling
@@ -89,4 +96,33 @@ void insertAtEnd(node **head, int data)
     }
     ptr->next = temp;
     printf("node insert successfully\n");
+}
+// function decleration for insert after specific element
+void insertAfterSpecific(node **head, int data)
+{
+    if (*head == NULL)
+    {
+        printf("No element found\n");
+    }
+    node *ptr = *head;
+    while (ptr != NULL)
+    {
+        if (ptr->info == data)
+            break;
+        ptr = ptr->next;
+    }
+    if (ptr == NULL)
+    {
+        printf("no element found\n");
+    }
+    else
+    {
+        printf("Enter the element you want to insert\n");
+        scanf("%d", &data);
+        temp = (node *)(malloc(sizeof(node)));
+        temp->info = data;
+        temp->next = ptr->next;
+        ptr->next = temp;
+        printf("Node insert successfully\n");
+    }
 }
