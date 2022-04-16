@@ -12,8 +12,10 @@ node *temp = NULL;
 // function prototyping
 void insertAtBeg(node **head, int data);
 void insertAtEnd(node **head, int data);
-void insertAfterSpecific(node **head, int data); // here data variable use to pass element after which we want to insert the element
+void insertAfterSpecific(node **head, int data);      // here data variable use to pass element after which we want to insert the element
+void insertAtSpecificPosition(node **head, int data); // here data variable use to pass position where we want to insert element
 void traversing(node *head);
+void deleteSpecific(node **head, int data); // here data variable use to provide a element that we want to delete
 int main()
 {
 
@@ -25,7 +27,9 @@ int main()
         printf("1 for insert at begning\n");
         printf("2 for insert at end\n");
         printf("3 for insert after specific element\n");
+        printf("4 for insert at specific element\n");
         printf("5 for traversing\n");
+        printf("6 for delete a element\n");
         printf("13 for exit\n");
         scanf("%d", &n);
         if (n == 13)
@@ -49,8 +53,18 @@ int main()
             scanf("%d", &data);
             insertAfterSpecific(&head, data);
             break;
+        case 4:
+            printf("Enter the position where you want to insert the element");
+            scanf("%d", &data);
+            insertAtSpecificPosition(&head, data);
+            break;
         case 5:
             traversing(head); // calling
+            break;
+        case 6:
+            printf("Enter the element you want to delete\n");
+            scanf("%d", &data);
+            deleteSpecific(&head, data);
             break;
         default:
             printf("Enter the valid choice\n");
@@ -124,5 +138,63 @@ void insertAfterSpecific(node **head, int data)
         temp->next = ptr->next;
         ptr->next = temp;
         printf("Node insert successfully\n");
+    }
+}
+// function decleration for insert element at specific position
+void insertAtSpecificPosition(node **head, int data)
+{
+    node *ptr = *head;
+    data--;
+    while (data > 1 && ptr != NULL)
+    {
+        ptr = ptr->next;
+        data--;
+    }
+    if (ptr != NULL)
+    {
+        printf("Enter the element that you want to insert\n");
+        scanf("%d", &data);
+        temp = (node *)(malloc(sizeof(node)));
+        temp->info = data;
+        temp->next = ptr->next;
+        ptr->next = temp;
+        printf("node insert successfully\n");
+    }
+    else
+    {
+        printf("Enter the vaid position\n");
+    }
+}
+// function decleration for delete a particular element
+void deleteSpecific(node **head, int data)
+{
+    if (*head == NULL)
+    {
+        printf("no element found\n");
+    }
+    node *ptr = *head;
+    if (ptr->info == data)
+    {
+        ptr = *head;
+        *head = ptr->next;
+        free(ptr);
+        printf("Node delete successfully\n");
+    }
+    else
+    {
+        while (ptr->next != NULL)
+        {
+            if (data == (ptr->next)->info)
+            {
+                temp = ptr->next;
+                ptr->next = temp->next;
+                free(temp);
+                printf("Node insert successfully\n");
+                break;
+            }
+            ptr = ptr->next;
+        }
+        if (ptr == NULL)
+            printf("no element found\n");
     }
 }
