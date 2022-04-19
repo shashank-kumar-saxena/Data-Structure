@@ -13,6 +13,7 @@ node *head = NULL;
 node *tail = NULL;
 // function decleration
 void insertAtBegning(node **head, node **tail, int data);
+void insertAtEnd(node **head, node **tail, int data);
 void traverseFromBegning(node *head);
 void traverseFromEnd(node *tail);
 void main()
@@ -22,6 +23,7 @@ void main()
     {
         printf("\nEnter your choice\n");
         printf("1 for insert at begning\n");
+        printf("2 for insert at end\n");
         printf("5 traverse from begning\n");
         printf("6 for traverse from Ending\n");
         printf("13 for exit\n");
@@ -36,6 +38,11 @@ void main()
             printf("Enter the data you want to insert\n");
             scanf("%d", &data);
             insertAtBegning(&head, &tail, data);
+            break;
+        case 2:
+            printf("Enter the data you want to insert\n");
+            scanf("%d", &data);
+            insertAtEnd(&head, &tail, data);
             break;
         case 5:
             traverseFromBegning(head);
@@ -93,5 +100,17 @@ void traverseFromEnd(node *tail)
     {
         printf("%d ", tail->info);
         tail = tail->prev;
+    }
+}
+void insertAtEnd(node **head, node **tail, int data)
+{
+    temp->info = data;
+    if (*head == NULL)
+    {
+        temp = (node *)(malloc(sizeof(node)));
+        temp->next = NULL;
+        temp->prev = NULL;
+        *head = temp;
+        *tail = temp;
     }
 }
