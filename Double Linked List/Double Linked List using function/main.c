@@ -7,7 +7,7 @@ typedef struct lklist
     int info;
     struct lklist *next;
 } node;
-// global variable decleration
+// global variable prototping
 node *temp = NULL;
 node *head = NULL;
 node *tail = NULL;
@@ -16,8 +16,9 @@ void insertAtBegning(node **head, node **tail, int data);           // case 1 //
 void insertAtEnd(node **head, node **tail, int data);               // case 2 //for insert element at the end of the linked list
 void insertAfterSpecificElement(node *head, node **tail, int data); // case 3 // for insert element after a specific element
 void insertAtSpecificElement(node *head, node **tail, int data);    // case 4 // for insert element at specific position
-void traverseFromBegning(node *head);                               // traversing from starting
-void traverseFromEnd(node *tail);                                   // traversing from last
+void traverseFromBegning(node *head);                               // case 5 // traversing from starting
+void traverseFromEnd(node *tail);                                   // case 6  // traversing from last
+void deleteAtBegning(node **head, node **tail);                     // case 7 //delete starting element
 void main()
 {
     int n = 0, data = 0;
@@ -31,6 +32,7 @@ void main()
         printf("4 for insert at specific position\n");
         printf("5 traverse from begning\n");
         printf("6 for traverse from Ending\n");
+        printf("7 for delete a element from starting\n");
         printf("13 for exit\n");
         scanf("%d", &n);
         if (n == 13)
@@ -73,6 +75,10 @@ void main()
             break;
         case 6:
             traverseFromEnd(tail); // calling
+            break;
+        case 7:
+            // anonymous error
+            deleteAtBegning(&head, &tail); // calling
             break;
         default:
             printf("Enter the valid choice\n");
@@ -228,5 +234,30 @@ void traverseFromEnd(node *tail)
     {
         printf("%d ", tail->info);
         tail = tail->prev;
+    }
+}
+// function decleration of delete starting element
+void deleteAtBegning(node **head, node **tail)
+{
+    if (*head == NULL)
+    {
+        printf("No Element found\n");
+        return;
+    }
+    if ((*head)->next == NULL)
+    {
+        *tail = NULL;
+        *head = NULL;
+        free(*head);
+        printf("Node Delete Successfully\n");
+        return;
+    }
+    else
+    {
+        temp = (*head);
+        *head = (*head)->next;
+        (*head)->prev = NULL;
+        free(temp);
+        printf("Node Delete Successfully\n");
     }
 }
