@@ -11,6 +11,7 @@ typedef struct lklist
 node *temp = NULL;
 node *head = NULL;
 node *tail = NULL;
+node *ptr = NULL;
 // function decleration
 void insertAtBegning(node **head, node **tail, int data);           // case 1 // for insert element at the starting of the linked list
 void insertAtEnd(node **head, node **tail, int data);               // case 2 //for insert element at the end of the linked list
@@ -20,6 +21,7 @@ void traverseFromBegning(node *head);                               // case 5 //
 void traverseFromEnd(node *tail);                                   // case 6  // traversing from last
 void deleteAtBegning(node **head, node **tail);                     // case 7 //delete starting element
 void deleteAtEnd(node **head, node **tail);                         // case 8 // delete last element
+void deleteSpecificElement(node **head, node **tail, int data);     // case 9 // delete specific element by searching
 void main()
 {
     int n = 0, data = 0;
@@ -84,6 +86,11 @@ void main()
             break;
         case 8:
             deleteAtEnd(&head, &tail);
+            break;
+        case 9:
+            printf("Enter the element you want to be search\n");
+            scanf("%d", &data);
+            deleteSpecificElement(&head, &tail, data);
             break;
         default:
             printf("Enter the valid choice\n");
@@ -266,11 +273,13 @@ void deleteAtBegning(node **head, node **tail)
         printf("Node Delete Successfully\n");
     }
 }
+// function for delete the last element for the list
 void deleteAtEnd(node **head, node **tail)
 {
     if (*head == NULL)
     {
         printf("No Element Found\n");
+        return;
     }
     if ((*tail)->prev == NULL)
     {
@@ -286,4 +295,42 @@ void deleteAtEnd(node **head, node **tail)
         free(temp);
     }
     printf("Node Delete Successfully\n");
+}
+// function for a specific element by searching
+void deleteSpecificElement(node **head, node **tail, int data)
+{
+
+    temp = *head;
+    if (*head == NULL)
+    {
+        printf("No Element Found\n");
+        return;
+    }
+    while (temp != NULL)
+    {
+        if (temp->info == data)
+        {
+            break;
+        }
+        temp = temp->next;
+    }
+    if (temp == NULL)
+    {
+        printf("Element Not Found\n");
+    }
+    else
+    {
+        if (temp->next == NULL)
+        {
+            free(temp);
+            *tail = NULL;
+            printf("Node Delete Successfully");
+        }
+        else if (temp->prev)
+
+            (temp->prev)->next = temp->next;
+        (temp->next)->prev = temp->prev;
+        free(temp);
+        printf("Node Delete Successfully\n");
+    }
 }
