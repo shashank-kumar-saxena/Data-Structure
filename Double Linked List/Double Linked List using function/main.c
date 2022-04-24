@@ -19,6 +19,7 @@ void insertAtSpecificElement(node *head, node **tail, int data);    // case 4 //
 void traverseFromBegning(node *head);                               // case 5 // traversing from starting
 void traverseFromEnd(node *tail);                                   // case 6  // traversing from last
 void deleteAtBegning(node **head, node **tail);                     // case 7 //delete starting element
+void deleteAtEnd(node **head, node **tail);                         // case 8 // delete last element
 void main()
 {
     int n = 0, data = 0;
@@ -33,6 +34,7 @@ void main()
         printf("5 traverse from begning\n");
         printf("6 for traverse from Ending\n");
         printf("7 for delete a element from starting\n");
+        printf("8 for delete element from last\n");
         printf("13 for exit\n");
         scanf("%d", &n);
         if (n == 13)
@@ -79,6 +81,9 @@ void main()
         case 7:
             // anonymous error
             deleteAtBegning(&head, &tail); // calling
+            break;
+        case 8:
+            deleteAtEnd(&head, &tail);
             break;
         default:
             printf("Enter the valid choice\n");
@@ -260,4 +265,25 @@ void deleteAtBegning(node **head, node **tail)
         free(temp);
         printf("Node Delete Successfully\n");
     }
+}
+void deleteAtEnd(node **head, node **tail)
+{
+    if (*head == NULL)
+    {
+        printf("No Element Found\n");
+    }
+    if ((*tail)->prev == NULL)
+    {
+        free(*tail);
+        *tail = NULL;
+        *head = NULL;
+    }
+    else
+    {
+        temp = *tail;
+        *tail = (*tail)->prev;
+        (*tail)->next = NULL;
+        free(temp);
+    }
+    printf("Node Delete Successfully\n");
 }
