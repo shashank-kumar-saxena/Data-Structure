@@ -23,6 +23,7 @@ void traverseFromEnd(node *tail);                                   // case 6  /
 void deleteAtBegning(node **head, node **tail);                     // case 7 //delete starting element
 void deleteAtEnd(node **head, node **tail);                         // case 8 // delete last element
 void deleteSpecificElement(node **head, node **tail, int data);     // case 9 // delete specific element by searching
+void deleteAtSpceificPosition(node **head, node **tail, int data);  // case 10 // delete a element at specific index
 void main()
 {
     int n = 0, data = 0;
@@ -38,6 +39,8 @@ void main()
         printf("6 for traverse from Ending\n");
         printf("7 for delete a element from starting\n");
         printf("8 for delete element from last\n");
+        printf("9 for delete a specific element\n");
+        printf("10 for delete a element at specific index\n");
         printf("13 for exit\n");
         scanf("%d", &n);
         if (n == 13)
@@ -89,9 +92,14 @@ void main()
             deleteAtEnd(&head, &tail);
             break;
         case 9:
-            printf("Enter the element you want to be search\n");
+            printf("Enter the element you want to be delete\n");
             scanf("%d", &data);
             deleteSpecificElement(&head, &tail, data);
+            break;
+        case 10:
+            printf("Enter the position of element you want to be delete\n");
+            scanf("%d", &data);
+            deleteAtSpceificPosition(&head, &tail, data); // calling
             break;
         default:
             printf("Enter the valid choice\n");
@@ -321,17 +329,38 @@ void deleteSpecificElement(node **head, node **tail, int data)
     }
     else
     {
-        if (temp->next == NULL)
+        if (temp->prev == NULL && temp->next == NULL)
         {
             free(temp);
             *tail = NULL;
             printf("Node Delete Successfully");
         }
-        else if (temp->prev)
-
+        else if (temp->prev == NULL)
+        {
+            (*head) = (*head)->next;
+            (*head)->prev = NULL;
+        }
+        else if (temp->next == NULL)
+        {
+            (*tail) = (*tail)->prev;
+            (*tail)->next = NULL;
+        }
+        else
+        {
             (temp->prev)->next = temp->next;
-        (temp->next)->prev = temp->prev;
+            (temp->next)->prev = temp->prev;
+        }
         free(temp);
+
         printf("Node Delete Successfully\n");
+    }
+}
+// function decleartion for delete a specific element by using index
+void deleteAtSpceificPosition(node **head, node **tail, int data)
+{
+    if (*head == NULL)
+    {
+        printf("No Data Found\n");
+        return;
     }
 }
