@@ -24,6 +24,7 @@ void deleteAtBegning(node **head, node **tail);                     // case 7 //
 void deleteAtEnd(node **head, node **tail);                         // case 8 // delete last element
 void deleteSpecificElement(node **head, node **tail, int data);     // case 9 // delete specific element by searching
 void deleteAtSpceificPosition(node **head, node **tail, int data);  // case 10 // delete a element at specific index
+void search(node *head, int data);                                  // case 11 // for search a particular element
 void main()
 {
     int n = 0, data = 0;
@@ -41,6 +42,7 @@ void main()
         printf("8 for delete element from last\n");
         printf("9 for delete a specific element\n");
         printf("10 for delete a element at specific index\n");
+        printf("11 for search an element\n");
         printf("13 for exit\n");
         scanf("%d", &n);
         if (n == 13)
@@ -105,6 +107,11 @@ void main()
                 break;
             }
             deleteAtSpceificPosition(&head, &tail, data); // calling
+            break;
+        case 11:
+            printf("Enter the element you want to be search\n");
+            scanf("%d", &data);
+            search(head, data);
             break;
         default:
             printf("Enter the valid choice\n");
@@ -397,4 +404,25 @@ void deleteAtSpceificPosition(node **head, node **tail, int data)
     }
     free(ptr);
     printf("Node Delete Successfully");
+}
+// function decleration of search an element in the list
+void search(node *head, int data)
+{
+    if (head == NULL)
+    {
+        printf("No Element Found\n");
+        return;
+    }
+    while (head != NULL)
+    {
+        if (data == head->info)
+            break;
+        head = head->next;
+    }
+    if (head != NULL)
+    {
+        printf("Element Found\n");
+        return;
+    }
+    printf("Element Not Found\n");
 }
