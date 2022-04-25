@@ -7,6 +7,7 @@ typedef struct lklist
     int info;
     struct lklist *next;
 } node;
+
 // global variable prototping
 node *temp = NULL;
 node *head = NULL;
