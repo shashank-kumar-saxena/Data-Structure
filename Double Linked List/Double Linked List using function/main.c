@@ -99,6 +99,11 @@ void main()
         case 10:
             printf("Enter the position of element you want to be delete\n");
             scanf("%d", &data);
+            if (data == 1)
+            {
+                deleteAtBegning(&head, &tail);
+                break;
+            }
             deleteAtSpceificPosition(&head, &tail, data); // calling
             break;
         default:
@@ -363,4 +368,33 @@ void deleteAtSpceificPosition(node **head, node **tail, int data)
         printf("No Data Found\n");
         return;
     }
+    ptr = *head;
+    while (data > 1 && ptr != NULL)
+    {
+        data--;
+        ptr = ptr->next;
+    }
+    if (ptr->prev == NULL && ptr->next == NULL)
+    {
+        free(ptr);
+        *head = NULL;
+        *tail = NULL;
+    }
+    else if (ptr->prev == NULL)
+    {
+        *head = (*head)->next;
+        (*head)->prev = NULL;
+    }
+    else if (ptr->next == NULL)
+    {
+        *tail = (*tail)->prev;
+        (*tail)->next = NULL;
+    }
+    else
+    {
+        (ptr->prev)->next = ptr->next;
+        (ptr->next)->prev = ptr->prev;
+    }
+    free(ptr);
+    printf("Node Delete Successfully");
 }
