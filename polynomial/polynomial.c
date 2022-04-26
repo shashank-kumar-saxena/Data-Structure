@@ -6,11 +6,13 @@ typedef struct polynomial
     int power;
     struct polynomial *next;
 } node;
-node addRes = NULL;
+node *addRes = NULL;
 node *head1 = NULL;
 node *head2 = NULL;
 node *temp = NULL;
 int result;
+// function prototype
+void left(node *one); // here it is use to add left variable value
 void main()
 {
     void insertAtBeg(struct polynomial **, int, int);
@@ -53,7 +55,17 @@ void main()
             traverse(head2);
             break;
         case 3:
-            addition(head1, head2);
+            if (addRes == NULL)
+            {
+                addition(head1, head2);
+                left(head1);
+                left(head2);
+            }
+            if (addRes != NULL)
+            {
+                printf("The Addition of tho polynomial \n");
+                traverse(addRes);
+            }
         default:
             break;
         }
@@ -93,19 +105,53 @@ void traverse(node *head)
 }
 void addition(node *one, node *two)
 {
-    temp = (node *)(malloc(sizeof(node)));
-    while (one != null)
+    result = 0;
+    // staring of while
+    while (one != NULL)
     {
-        while (two != null)
+        two = head2;
+        while (two != NULL)
         {
             if (one->power == two->power)
             {
                 result = one->coeff + two->coeff;
+                temp = (node *)(malloc(sizeof(node)));
+                temp->coeff = result;
+                temp->power = two->power;
+                temp->next = addRes;
+                addRes = temp;
             }
-            if (one->power > two->power)
-            {
-                result =
-            }
+            two = two->next;
         }
+        one = one->next;
+    }
+    // end of while
+}
+void left(node *one)
+{
+    // but till now some terms in first polynomial are left
+    node *two = addRes; // now two use for traverse in partial obtained result so that left terms can be added
+    int c = 0;          // here variable c is use as a counter
+    while (one != NULL)
+    {
+        two = addRes;
+        while (two != NULL)
+        {
+            if (one->power == two->power)
+            {
+                c++;
+            }
+            two = two->next;
+        }
+        if (c == 0)
+        {
+            temp = (node *)(malloc(sizeof(node)));
+            temp->coeff = one->coeff;
+            temp->power = one->power;
+            temp->next = addRes;
+            addRes = temp;
+        }
+        c = 0;
+        one = one->next;
     }
 }
