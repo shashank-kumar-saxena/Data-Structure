@@ -10,6 +10,7 @@ node addRes = NULL;
 node *head1 = NULL;
 node *head2 = NULL;
 node *temp = NULL;
+int result;
 void main()
 {
     void insertAtBeg(struct polynomial **, int, int);
@@ -100,6 +101,10 @@ void addition(node *one, node *two)
             if (one->power == two->power)
             {
                 result = one->coeff + two->coeff;
+            }
+            if (one->power > two->power)
+            {
+                result =
             }
         }
     }
