@@ -38,7 +38,7 @@ void main()
     while (1)
     {
         printf("\nEnter your choice\n");
-        printf("1 for view 1st polynomial");
+        printf("1 for view 1st polynomial\n");
         printf("2 for view 2nd polynomial\n");
         printf("3 for addition\n");
         printf("4 for multipication\n");
