@@ -1,4 +1,3 @@
-
 /******************************************************************************
 
                             Online C Compiler.
@@ -20,7 +19,7 @@ node *head1 = NULL;
 node *head2 = NULL;
 node *temp = NULL;
 node *ptr=NULL;
-int result,t2=0;
+int result,t2=0,p2;
 // function prototype
 void left(node *one); // here it is use to add left variable value
 void sort(node *temp);//use for sort the polynomial
@@ -182,6 +181,9 @@ void sort(node *t)
 	 t2=t->coeff;
 	 t->coeff=ptr->coeff;
 	 ptr->coeff=t2;
+	 	 p2=t->power;
+	 t->power=ptr->power;
+	 ptr->power=p2;
    }
   }
   t=t->next;
