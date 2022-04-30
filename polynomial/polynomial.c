@@ -12,7 +12,7 @@ node *head2 = NULL;	 // use to point second polynomial
 node *temp = NULL;	 // use to create a node
 node *ptr = NULL;	 // use for traverse in left function
 node *mul = NULL;	 // use to point multiplication node
-int result, t2 = 0, p2;
+int result, t2 = 0, p2, i = 0;
 // function prototype
 void left(node *one);  // here it is use to add left variable value
 void sort(node *temp); // use for sort the polynomial
@@ -26,7 +26,7 @@ void main()
 	int c, p, i, n;
 	printf("Enter the terms in first polynomial\n");
 	scanf("%d", &n);
-	for (int i = 1; i <= n; i++)
+	for (i = 1; i <= n; i++)
 	{
 		printf("Enter the cofficent and power of %dth\n", i);
 		scanf("%d%d", &c, &p);
@@ -34,7 +34,7 @@ void main()
 	}
 	printf("Enter the terms in second polynomial\n");
 	scanf("%d", &n);
-	for (int i = 1; i <= n; i++)
+	for (i = 1; i <= n; i++)
 	{
 		printf("Enter the cofficent and power of %dth\n", i);
 		scanf("%d%d", &c, &p);
