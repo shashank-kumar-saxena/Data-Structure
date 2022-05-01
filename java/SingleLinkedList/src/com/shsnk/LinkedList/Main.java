@@ -6,12 +6,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         LinkedList list=new LinkedList();
-        int n=0;
+        int n=0,data;
         while (true)
         {
             System.out.println("\nEnter your choice");
             System.out.println("1 for insert at beginning");
-            System.out.println("2 for traverse");
+            System.out.println("2 for insert at end");
+            System.out.println("3 for insert at specific position");
+            System.out.println("4 for insert after specific element");
+            System.out.println("5 for traverse");
             System.out.println("13 for exit");
              n=sc.nextInt();
             switch (n)
@@ -22,6 +25,17 @@ public class Main {
                     list.insertAtBeg(n);
                     break;
                 case 2:
+                    System.out.println("Enter the data you want to insert");
+                    n=sc.nextInt();
+                    list.insertAtEnd(n);
+                    break;
+                case 3:
+                    System.out.println("Enter the position and element you want to insert");
+                    n=sc.nextInt();
+                    data=sc.nextInt();
+                    list.insertAtSpecificPosition(n,data);
+                    break;
+                case 5:
                     list.traverse();
                     break;
                 case 13:

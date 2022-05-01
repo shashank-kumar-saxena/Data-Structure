@@ -6,7 +6,7 @@ import java.util.Stack;
 public class Solution {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        com.shshnk.stack.StackClass st=new com.shshnk.stack.StackClass();
+        StackClass st=new StackClass();
         System.out.println(st.getTos());
         while (true)
         {
