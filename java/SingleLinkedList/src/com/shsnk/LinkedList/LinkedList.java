@@ -111,4 +111,25 @@ public class LinkedList {
         tra=null;
         System.out.println("Node Delete Successfully");
     }
+    void deleteEnd()
+    {
+        if(head==null)
+        {
+            System.out.println("No element found");
+            return;
+        }
+        if(head.next==null)
+        {
+            head=null;
+            System.out.println("Element delete successfully");
+            return;
+        }
+        tra=head;
+        while((tra.next).next!=null)
+        {
+            tra=tra.next;
+        }
+        tra.next=null;
+        System.out.println("Node Delete Successfully");
+    }
 }

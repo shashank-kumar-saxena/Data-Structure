@@ -16,6 +16,7 @@ public class Main {
             System.out.println("4 for insert after specific element");
             System.out.println("5 for traverse");
             System.out.println("6 for delete element from starting");
+            System.out.println("7 for delete element from end");
             System.out.println("13 for exit");
              n=sc.nextInt();
             switch (n)
@@ -47,6 +48,9 @@ public class Main {
                     break;
                 case 6:
                     list.deleteStarting();
+                    break;
+                case 7:
+                        list.deleteEnd();
                     break;
                 case 13:
                     System.exit(1);
