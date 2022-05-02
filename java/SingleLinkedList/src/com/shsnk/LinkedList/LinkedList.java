@@ -99,4 +99,16 @@ public class LinkedList {
             System.out.println("Node Insert Successfully");
         }
     }
+    void deleteStarting()
+    {
+        if(head==null)
+        {
+            System.out.println("No Element Found");
+            return;
+        }
+        tra=head;//here tra is use to hold the stating node
+        head=head.next;
+        tra=null;
+        System.out.println("Node Delete Successfully");
+    }
 }
