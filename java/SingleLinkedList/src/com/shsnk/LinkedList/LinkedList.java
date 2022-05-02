@@ -71,4 +71,32 @@ public class LinkedList {
         tra.next=temp;
         System.out.println("Node Insert Successfully");
     }
+
+    void insertAfterElement(int element,int data)
+    {
+        if(head==null)
+        {
+            System.out.println("No Data Found");
+            return;
+        }
+        tra=head;
+        while (tra!=null)
+        {
+            if(tra.data==element)
+            {
+                break;
+            }
+            tra=tra.next;
+        }
+        if(tra==null)
+            System.out.println("No Element Found");
+        else
+        {
+            Node temp=new Node();
+            temp.data=data;
+            temp.next= tra.next;
+            tra.next=temp;
+            System.out.println("Node Insert Successfully");
+        }
+    }
 }
