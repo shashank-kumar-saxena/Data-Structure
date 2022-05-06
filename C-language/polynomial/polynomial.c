@@ -209,14 +209,9 @@ void multi(node *head1, node *head2)
 			temp = (node *)(malloc(sizeof(node)));
 
 			temp->coeff = (head1->coeff) * (ptr->coeff);
-			if (head1->power != 0 && ptr->power != 0)
-			{
-				temp->power = (head1->power) * (ptr->power);
-			}
-			else
-			{
+			
 				temp->power = (head1->power) + (ptr->power);
-			}
+			
 			temp->next = mul;
 			mul = temp;
 			ptr = ptr->next;
