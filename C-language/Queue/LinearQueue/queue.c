@@ -7,6 +7,8 @@ typedef struct queueList
 } queue;
 int i;
 void enqueue(int data, queue *q);
+void dequeue(queue *q);
+void traverse(queue q);
 void main()
 {
     queue q;
@@ -18,8 +20,13 @@ void main()
         printf("\nEnter your choice\n");
         printf("1 for insert\n");
         printf("2 for delete\n");
-        printf("3 for exit\n");
+        printf("3 for traverse\n");
+        printf("4 for exit\n");
         scanf("%d", &n);
+        if (n == 4)
+        {
+            exit(0);
+        }
         switch (n)
         {
         case 1:
@@ -27,7 +34,11 @@ void main()
             scanf("%d", &data);
             enqueue(data, &q);
             break;
-
+        case 2:
+            dequeue(&q);
+            break;
+        case 3:
+            traverse(q);
         default:
             break;
         }
@@ -40,23 +51,58 @@ void enqueue(int data, queue *q)
         (q->front)++;
         (q->rear)++;
     }
-    if (q->rear != 9)
+    else if (q->rear == 9 && q->front != 0)
+    {
+        int len = q->front - q->rear;
+        for (i = 0; i < len; i++)
+        {
+            q->data[i] = q->data[q->rear];
+            
+        }
+    }
+    else if (q->rear > 9 && q->front == 0)
+    {
+        printf("Overflow\n");
+        return;
+    }
+    else
     {
         q->data[q->rear] = data;
         (q->rear)++;
+        printf("Data Insert Successfully");
     }
-    if (q->rear == 9 && q->front >= 0)
+}
+void dequeue(queue *q)
+{
+    if (q->front == -1)
     {
-        q->rear = q->front;
-        q->front = 0;
-        int len=q->rear;
-        for (i = 0; i < len; i++)
+        printf("Underflow\n");
+        return;
+    }
+    if (q->front < 9)
+    {
+        q->front++;
+        printf("data delete successfully");
+    }
+    else
+    {
+        if (q->rear == q->front)
         {
-            q->data[(q->front)]=q->data[(q->rear)++];
+            q->front = -1;
+            q->rear = -1;
+            printf("Underflow\n");
         }
     }
-    if (q->rear == 9 && q->front == -1)
+}
+void traverse(queue q)
+{
+    if (q.rear == -1)
     {
-        printf("Overflow\n");
+        printf("No Element Found\n");
+    }
+    printf("The elements are\n");
+    for (int i = q.front; i < q.rear; i++)
+    {
+        printf("%d ", q.data[i]);
     }
 }
