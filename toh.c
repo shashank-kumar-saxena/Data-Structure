@@ -1,4 +1,5 @@
 #include <stdio.h>
+static long int c = 0;
 void main()
 {
     void toh(int, char, char, char);
@@ -6,9 +7,11 @@ void main()
     printf("enter the no of disc\n");
     scanf("%d", &n);
     toh(n, 'A', 'B', 'C');
+    printf("%d", c);
 }
 void toh(int n, char A, char B, char C)
 {
+    c++;
     if (n == 1)
     {
         printf("Move %c to %c\n", A, B);
