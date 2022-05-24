@@ -98,6 +98,7 @@ void main()
             }
             if (flag == 1)
             {
+
                 printf("Element found at node %d", count);
             }
             else
