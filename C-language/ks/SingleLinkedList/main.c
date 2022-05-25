@@ -84,6 +84,7 @@ void main()
                 printf("Element not found\n");
                 break;
             }
+
             ptr = head;
             int flag = 0, count = 0;
             while (ptr != NULL)
