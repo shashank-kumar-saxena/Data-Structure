@@ -11,7 +11,8 @@ public class MyHashFun {
         {
             System.out.println("Enter Your Choice");
             System.out.println("1 for insert");
-            System.out.println("2 search");
+            System.out.println("2 for search");
+            System.out.println("3 for exit");
             n=sc.nextInt();
             switch (n)
             {
@@ -21,9 +22,22 @@ public class MyHashFun {
                     hash.insert(n);
                     break;
                 case 2:
-
+                    System.out.println("Enter the data you want to search");
+                    n=sc.nextInt();
+                    if(hash.hashing(n))
+                    {
+                        System.out.println("Element present");
+                    }
+                    else
+                    {
+                        System.out.println("Not Present");
+                    }
+                    break;
+                case 3:
+                    System.exit(12);
                     break;
                 default:
+                    System.out.println("Enter the valid choice");
             }
         }
     }
