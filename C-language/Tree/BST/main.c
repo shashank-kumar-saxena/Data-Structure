@@ -11,6 +11,8 @@ tree *_insertAtBST(tree *root, int data);
 void inorder(tree *root);
 void preorder(tree *root);
 void postorder(tree *root);
+tree *_delete(tree **root, int data, tree *Proot);
+tree *_minimumElement(tree *root);
 void main()
 {
     tree *root = NULL;
@@ -23,6 +25,9 @@ void main()
         printf("2 for Pre-order\n");
         printf("3 for In-order traversion\n");
         printf("4 for Post-order\n");
+        printf("5 for delete an node\n");
+        printf("6 for find minimum Element\n");
+        printf("7 for exit\n");
         scanf("%d", &n);
         switch (n)
         {
@@ -44,10 +49,26 @@ void main()
         case 4:
             postorder(root);
             break;
+        case 5:
+            printf("Enter the element you want to delete\n");
+            scanf("%d", &data);
+            _delete(&root, data, NULL);
+            break;
+        case 6:
+            printf("The Minimum Element is %d", (_minimumElement(root))->info);
+            break;
         default:
             break;
         }
     }
+}
+tree *_minimumElement(tree *root)
+{
+    while (root->left != NULL)
+    {
+        root = root->left;
+    }
+    return (root);
 }
 tree *_insertAtBST(tree *root, int data)
 {
@@ -90,5 +111,54 @@ void postorder(tree *root)
         inorder(root->left);
         inorder(root->right);
         printf("%d ", root->info);
+    }
+}
+tree *_delete(tree **root, int data, tree *Proot)
+{
+    if (data > (*root)->info)
+    {
+        _delete((*root)->right, data, (*root));
+    }
+    else if (data < (*root)->info)
+    {
+        _delete((*root)->left, data, (*root));
+    }
+    else
+    {
+        tree *ptr = (*root);
+        if ((*root)->left == NULL && (*root)->right == NULL)
+        {
+            if (Proot->left != NULL)
+            {
+                Proot->left = NULL;
+            }
+            else
+            {
+                Proot->right = NULL;
+            }
+        }
+        else if ((*root)->left != NULL && (*root)->right != NULL)
+        {
+        }
+        else
+        {
+            tree *ptr2 = NULL;
+            if ((*root)->left != NULL)
+            {
+                ptr2 = (*root)->left;
+            }
+            else if ((*root)->right != NULL)
+            {
+                ptr2 = (*root)->right;
+            }
+            if (Proot->info <= ptr2->info)
+            {
+                Proot->right = ptr2;
+            }
+            else
+            {
+                Proot->left = ptr2;
+            }
+        }
     }
 }
