@@ -8,6 +8,7 @@ typedef struct lklist
     struct lklist *next;
 } node;
 
+
 // global variable prototping
 node *temp = NULL;
 node *head = NULL;
@@ -405,7 +406,7 @@ void deleteAtSpceificPosition(node **head, node **tail, int data)
     free(ptr);
     printf("Node Delete Successfully");
 }
-// function decleration of search an element in the list
+// function decleration  of search an element in the list
 void search(node *head, int data)
 {
     if (head == NULL)
