@@ -26,6 +26,7 @@ void main()
         {
             exit(1);
         }
+        
         switch (n)
         {
         case 1:
