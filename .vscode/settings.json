@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "STACK.C": "cpp",
-        "main.C": "cpp"
+        "main.C": "cpp",
+        "selection.C": "cpp"
     }
 }
