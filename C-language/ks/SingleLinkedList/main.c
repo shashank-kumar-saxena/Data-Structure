@@ -1,10 +1,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct lkList
+typedef struct LoveYouKhushi
 {
     int info;
-    struct lkList *next;
+    struct LoveYouKhushi *next;
 } node;
 
 void main()
@@ -35,7 +35,10 @@ void main()
             scanf("%d", &data);
             temp = (node *)malloc(sizeof(node));
             temp->info = data;
-            temp->next = head;
+            if (head == NULL)
+                temp->next = NULL;
+            else
+                temp->next = head;
             head = temp;
             printf("Node Insert Successfully\n");
             break;
@@ -44,7 +47,7 @@ void main()
             if (head == NULL)
             {
                 printf("No element found\n");
-                return;
+                break;
             }
             printf("Data is\n");
             ptr = head;
@@ -86,10 +89,10 @@ void main()
             }
 
             ptr = head;
-            int flag = 0, count = 0;
+            int flag = 0, position = 0;
             while (ptr != NULL)
             {
-                count++;
+                position++;
                 if (ptr->info == data)
                 {
                     flag++;
@@ -100,7 +103,7 @@ void main()
             if (flag == 1)
             {
 
-                printf("Element found at node %d", count);
+                printf("Element found at node %d", position);
             }
             else
             {
@@ -108,6 +111,7 @@ void main()
             }
             break;
         default:
+            printf("Enter the valid choice\n");
             break;
         }
     }
