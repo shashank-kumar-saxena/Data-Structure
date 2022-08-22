@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "STACK.C": "cpp",
-        "BUBBLE.C": "cpp"
+        "BUBBLE.C": "cpp",
+        "main.C": "cpp"
     }
 }
