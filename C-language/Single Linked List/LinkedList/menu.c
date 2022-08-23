@@ -23,6 +23,7 @@ void main()
 		printf("6 for search the element\n");
 		printf("7 for delete a specific element\n");
 		printf("8 for delete a element at specific position\n");
+		printf("9 for reverse a linked list\n");
 		printf("13 for exit\n");
 		scanf("%d", &n);
 		if (n == 13)
@@ -31,6 +32,26 @@ void main()
 		}
 		switch (n)
 		{
+		case 9:
+			node *current = head;
+			node *prev = NULL, *next = NULL;
+			while (current != NULL)
+			{
+				next = current->next;
+				current->next = prev;
+				prev = current;
+				current = next;
+			}
+			head = prev;
+			ptr = prev;
+			while (ptr->next != NULL)
+			{
+				printf("%d->", ptr->info);
+				ptr = ptr->next;
+			}
+			printf("%d", ptr->info);
+
+			break;
 		case 1:
 			// this case use to enter node at begning
 			printf("Enter the data your want to insert\n");
