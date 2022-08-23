@@ -62,7 +62,7 @@ void enqueue(queue *q, int data)
     }
     q->a[q->rear] = data;
 }
-void delete (queue *q)
+void dequeue(queue *q)
 {
     if (q->front == q->rear)
     {
