@@ -4,6 +4,8 @@
         "main.C": "cpp",
         "selection.C": "cpp",
         "xstring": "c",
-        "xutility": "c"
+        "xutility": "c",
+        "initializer_list": "cpp",
+        "type_traits": "cpp"
     }
 }
