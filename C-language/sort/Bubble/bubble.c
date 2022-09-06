@@ -1,7 +1,7 @@
 #include <stdio.h>
 int main()
 {
-    int a[10] = {1, 41, 6, 3, 7, 7, 75, 3, 63, 12};
+    int a[10] = {1, 2, 3, 4, 5, 7, 8, 9, 10};
     void bubble(int[], int);
     bubble(a, 10);
 }
