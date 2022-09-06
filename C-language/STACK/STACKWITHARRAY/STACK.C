@@ -9,9 +9,9 @@ typedef struct stacktype
 int n, data = 0, k;
 void main()
 {
+  stack s;
   void push(stack *, int);
   int pop(stack *);
-  stack s;
   s.tos = -1;
 
   while (1)
